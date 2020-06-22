@@ -17,3 +17,7 @@ input {
 button {
     padding: 10px;
 }
+
+.message-error {
+    display: none;
+}
