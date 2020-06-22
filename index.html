@@ -9,12 +9,16 @@
 </head>
 <body>
     <div>
-        <h3>Lista</h3>
+        <h1>Timer</h1>
     </div>
     <div>
-        <input type="number" class="userTime">
-        <button class="confirmTimer">Ok</button>
-        <p>30</p>
+        <div class="editTimer">
+            <input type="number" class="userTime">
+            <button class="confirmTimer">Ok</button>
+        </div>
+        <div class="numberTimer">
+            <p class="valueTimer">0</p>
+        </div>
     </div>
 </body>
 <script>
@@ -23,14 +27,18 @@
         number: document.querySelector('.userTime').value,
         interval: "",
         count: function() {
+            document.querySelector('.editTimer').style.display = "none";
+            document.querySelector('.valueTimer').innerHTML = document.querySelector('.userTime').value;
             this.number = document.querySelector('.userTime').value;
             this.interval = setInterval(function() { JS.timer.substrate() }, 1000);
         },
         substrate: function() {
             if (this.number > 0) {
                 this.number = this.number - 1;
-                document.querySelector('.userTime').value = this.number
+                document.querySelector('.userTime').value = this.number;
+                document.querySelector('.valueTimer').innerHTML = this.number;
             } else {
+                document.querySelector('.editTimer').style.display = "block";
                 clearInterval(this.interval);
             }
         }
