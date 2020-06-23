@@ -8,19 +8,21 @@
     
 </head>
 <body>
-    <div>
+    <header>
         <h1>Timer</h1>
-    </div>
-    <div>
-        <div class="editTimer">
-            <input type="number" class="userTime">
-            <button class="confirmTimer">Ok</button>
-            <div class="message-error">
-                <p>Insira um valor válido!</p>
-            </div>
-        </div>
+    </header>
+    <div class="timer">
         <div class="numberTimer">
             <p class="valueTimer">0</p>
+            <div class="editTimer">
+                <form onsubmit="event.preventDefault();">
+                    <input type="number" class="userTime" title="Numbers only" min="1" step="1">
+                    <button class="confirmTimer">Ativar</button>
+                    <div class="message-error">
+                        <p>Insira um valor válido!</p>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </body>
@@ -34,6 +36,7 @@
             if(validForm) {
                 document.querySelector('.editTimer').style.display = "none";
                 document.querySelector('.message-error').style.display = "none";
+                document.querySelector('.valueTimer').style.display = "block";
                 document.querySelector('.valueTimer').innerHTML = document.querySelector('.userTime').value;
                 this.number = document.querySelector('.userTime').value;
                 this.interval = setInterval(function() { JS.timer.substrate() }, 1000);
@@ -48,6 +51,7 @@
                 document.querySelector('.valueTimer').innerHTML = this.number;
             } else {
                 document.querySelector('.editTimer').style.display = "block";
+                document.querySelector('.valueTimer').style.display = "none";
                 clearInterval(this.interval);
             }
         },
@@ -60,6 +64,6 @@
         }
     }
 
-    document.querySelector('.confirmTimer').addEventListener("click", function() {JS.timer.count()});
+    document.querySelector('.confirmTimer').addEventListener("click", function() {JS.timer.count()}, false);
 </script>
 </html>

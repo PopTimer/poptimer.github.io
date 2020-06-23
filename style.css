@@ -1,23 +1,81 @@
 * {
     margin: 0;
     padding: 0;
+    border: 0;
 }
 
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+header {
+    float: left;
+    width: 100%;
+    background-color: #333;
+    color: #FFF;
+    padding: 10px 0;
+}
 .numberTimer {
-    font-size: 36px;
-    background: #dddddd;
+    font-size: 232px;
     padding: 10px;
     margin: 10px;
+    text-align: center;
+
 }
 
 input {
-    padding: 10px;
+    float: left;
+    font-size: 232px;
+    background-color: transparent;
+    border-bottom: 1px solid #000;
+    outline: none;
+    width: 100%;
+    text-align: center;
+}
+
+input:hover {
+    border-bottom: 1px solid #999;
+}
+input:active {
+    border-bottom: 1px solid #333;
+}
+
+h1 {
+    margin-left: 20px;
+}
+
+.timer {
+    background: #CCC;
+    width: 50%;
+    float: left;
 }
 
 button {
-    padding: 10px;
+    padding: 14px;
+    float: left;
+    margin: 10px 0;
+    width: 100%;
+}
+
+.valueTimer {
+    display: none;
+    margin-right: 15px;
 }
 
 .message-error {
     display: none;
+    background-color: crimson;
+    padding: 10px 0;
+    margin: 10px 0;
+    float: left;
+    width: 100%;
+    font-size: 14px;
+}
+
+.message-error p {
+    color: #FFF;
+}
+
+.col-6 {
+    width: 50%;
+    float: left;
 }
