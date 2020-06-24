@@ -1,0 +1,23 @@
+{
+  "name": "timer",
+  "version": "0.1.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edergabriel/timer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/edergabriel/timer/issues"
+  },
+  "homepage": "https://github.com/edergabriel/timer#readme",
+  "devDependencies": {
+    "http-server": "^0.12.3"
+  }
+}
