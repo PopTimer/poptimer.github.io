@@ -29,8 +29,7 @@ JS.timer = {
             this.number = this.number - 1;
             document.querySelector('.userTime').value = this.number;
             document.querySelector('.valueTimer').innerHTML = this.number;
-            document.querySelector('.barTimer div').style.width = (parseInt(document.querySelector('.barTimer div').style.width) + JS.timer.bar_parts) + "%"
-            console.log(this.number, document.querySelector('.barTimer div').style.width);
+            document.querySelector('.barTimer div').style.width = (parseFloat(document.querySelector('.barTimer div').style.width) + JS.timer.bar_parts) + "%";
         } else {
             this.stopTimer();
         }
