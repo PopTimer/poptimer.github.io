@@ -10,26 +10,25 @@
     <header>
         <h1>Timer</h1>
     </header>
-    <div class="timer">
-        <div class="numberTimer">
-            <p class="valueTimer">0</p>
-            <div class="editTimer">
-                <form onsubmit="event.preventDefault();">
-                    <input type="number" class="userTime" title="Numbers only" min="1" step="1">
-                    <button class="confirmTimer">Ativar</button>
-                    <div class="message-error">
-                        <p>Insira um valor válido!</p>
-                    </div>
-                </form>
+    <div class="boxNumber">
+        <p class="valueTimer">0</p>
+        <form onsubmit="event.preventDefault();" id="insertTimer">
+            <input type="number" class="userTime" title="Numbers only" min="1" step="1">
+            <button>Ativar</button>
+            <div class="message-error">
+                <p>Insira um valor válido!</p>
             </div>
-            <div class="controlTimer">
-                <div>
-                    <button class="stop">Parar</button>
-                </div>
-                <div>
-                    <button class="pause">Pause</button>
-                </div>
+        </form>
+        <div class="controlTimer">
+            <div>
+                <button class="stop">Parar</button>
             </div>
+            <div>
+                <button class="pause">Pause</button>
+            </div>
+        </div>
+        <div class="barTimer">
+            <div></div>
         </div>
     </div>
 </body>

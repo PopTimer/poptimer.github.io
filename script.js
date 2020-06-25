@@ -3,18 +3,22 @@ JS.timer = {
     number: document.querySelector('.userTime').value,
     interval: "",
     flg_pause: false,
+    bar_parts: 0,
+
     count: function() {
         const validForm = this.valid();
         if(validForm) {
-            document.querySelector('.editTimer').style.display = "none";
+            document.querySelector('#insertTimer').style.display = "none";
             document.querySelector('.message-error').style.display = "none";
             document.querySelector('.controlTimer').style.display = "block";
             document.querySelector('.valueTimer').style.display = "block";
             document.querySelector('.valueTimer').innerHTML = document.querySelector('.userTime').value;
+            JS.timer.configBar(document.querySelector('.userTime').value);
             this.number = document.querySelector('.userTime').value;
             this.interval = setInterval(function() { 
                 if(!JS.timer.flg_pause) { 
                     JS.timer.substrate() 
+                   
                 } }, 1000);
         } else {
             document.querySelector('.message-error').style.display = "block";
@@ -25,9 +29,15 @@ JS.timer = {
             this.number = this.number - 1;
             document.querySelector('.userTime').value = this.number;
             document.querySelector('.valueTimer').innerHTML = this.number;
+            document.querySelector('.barTimer div').style.width = (parseInt(document.querySelector('.barTimer div').style.width) + JS.timer.bar_parts) + "%"
+            console.log(this.number, document.querySelector('.barTimer div').style.width);
         } else {
             this.stopTimer();
         }
+    },
+    configBar: function(number) {
+        JS.timer.bar_parts = 100/number;
+        document.querySelector('.barTimer div').style.width = 0;
     },
     valid: function() {
         if(document.querySelector('.userTime').value == 0) {
@@ -44,7 +54,7 @@ JS.timer = {
         }
     },
     stopTimer: function() {
-        document.querySelector('.editTimer').style.display = "block";
+        document.querySelector('#insertTimer').style.display = "block";
         document.querySelector('.valueTimer').style.display = "none";
         document.querySelector('.controlTimer').style.display = "none";
         document.querySelector('.userTime').value = 0;
@@ -53,6 +63,6 @@ JS.timer = {
     }
 }
 
-document.querySelector('.confirmTimer').addEventListener("click", function() {JS.timer.count()}, false);
+document.querySelector('#insertTimer button').addEventListener("click", function() {JS.timer.count()}, false);
 document.querySelector('.pause').addEventListener("click", function() {JS.timer.pauseTimer()}, false);
 document.querySelector('.stop').addEventListener("click", function() {JS.timer.stopTimer()}, false);

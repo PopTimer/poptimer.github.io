@@ -14,13 +14,6 @@ header {
     color: #FFF;
     padding: 10px 0;
 }
-.numberTimer {
-    font-size: 232px;
-    padding: 10px;
-    margin: 10px;
-    text-align: center;
-
-}
 
 input {
     float: left;
@@ -43,10 +36,13 @@ h1 {
     margin-left: 20px;
 }
 
-.timer {
+.boxNumber {
     background: #CCC;
     width: 50%;
     float: left;
+    font-size: 232px;
+    padding: 10px;
+    text-align: center;
 }
 
 button {
@@ -81,6 +77,18 @@ button {
     width: 33%;
     padding: 10px;
     float: left;
+}
+
+.barTimer {
+    background-color: #edfbff;
+    width: 100%;
+    float: left;
+}
+
+.barTimer div { 
+    height: 25px;
+    width: 0%;
+    background-color: #383838;
 }
 
 .message-error p {
