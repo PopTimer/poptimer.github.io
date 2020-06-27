@@ -83,6 +83,7 @@ button {
     background-color: #edfbff;
     width: 100%;
     float: left;
+    margin: 10px;
 }
 
 .barTimer div { 

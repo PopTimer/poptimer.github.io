@@ -30,6 +30,7 @@ JS.timer = {
             document.querySelector('.userTime').value = this.number;
             document.querySelector('.valueTimer').innerHTML = this.number;
             document.querySelector('.barTimer div').style.width = (parseFloat(document.querySelector('.barTimer div').style.width) + JS.timer.bar_parts) + "%";
+            /*document.querySelector('.barTimer span').innerHTML = (parseFloat(document.querySelector('.barTimer div').style.width) + JS.timer.bar_parts) + "%"*/
         } else {
             this.stopTimer();
         }
