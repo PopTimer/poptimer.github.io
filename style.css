@@ -36,12 +36,13 @@ h1 {
     margin-left: 20px;
 }
 
-.boxNumber {
+section {
     background: #CCC;
-    width: 50%;
     float: left;
+}
+
+.boxNumber {
     font-size: 232px;
-    padding: 10px;
     text-align: center;
 }
 
@@ -55,6 +56,7 @@ button {
 .valueTimer {
     display: none;
     margin-right: 15px;
+    text-align: center;
 }
 
 .message-error {
@@ -83,7 +85,7 @@ button {
     background-color: #edfbff;
     width: 100%;
     float: left;
-    margin: 10px;
+    margin: 10px 0;
 }
 
 .barTimer div { 
@@ -96,7 +98,12 @@ button {
     color: #FFF;
 }
 
-.col-6 {
-    width: 50%;
-    float: left;
-}
+.blink {
+    animation: blinker 1s linear infinite;
+  }
+  
+  @keyframes blinker {
+    50% {
+      background: #FFF;
+    }
+  }

@@ -4,6 +4,7 @@
   "description": "",
   "main": "script.js",
   "scripts": {
+    "dev": "",
     "test": ""
   },
   "repository": {
@@ -19,5 +20,8 @@
   "homepage": "https://github.com/edergabriel/timer#readme",
   "devDependencies": {
     "http-server": "^0.12.3"
+  },
+  "dependencies": {
+    "bootstrap": "^4.5.0"
   }
 }

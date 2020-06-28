@@ -3,35 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <title>Timer</title>
+    <title>PopTimer</title>
 </head>
 <body>
-    <header>
-        <h1>Timer</h1>
-    </header>
-    <div class="barTimer">
-        <div></div>
-        <span></span>
-    </div>
-    <div class="boxNumber">
-        <p class="valueTimer">0</p>
-        <form onsubmit="event.preventDefault();" id="insertTimer">
-            <input type="number" class="userTime" title="Numbers only" min="1" step="1">
-            <button>Ativar</button>
-            <div class="message-error">
-                <p>Insira um valor válido!</p>
-            </div>
-        </form>
-        <div class="controlTimer">
-            <div>
-                <button class="stop">Parar</button>
-            </div>
-            <div>
-                <button class="pause">Pause</button>
+
+        <header  class="container-fluid">
+            <h1>PopTimer</h1>
+        </header>
+    <div class="container-fluid">  
+        <div class="row">
+            <div class="col-12">
+                <div class="barTimer">
+                    <div></div>
+                    <span></span>
+                </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-12">
+            </div>
+        </div>
+
     </div>
+    <section class="container-fluid">
+        <div class="boxNumber">
+            <p class="valueTimer">0</p>
+            <form onsubmit="event.preventDefault();" id="insertTimer">
+                <input type="number" class="userTime" title="Numbers only" min="1" step="1">
+                <button class="btn btn-primary">Ativar</button>
+                <div class="message-error">
+                    <p>Insira um valor válido!</p>
+                </div>
+            </form>
+            <div class="controlTimer">
+                <div>
+                    <button class="btn btn-primary stop">Parar</button>
+                </div>
+                <div>
+                    <button class="btn btn-primary pause">Pausar</button>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 <script src="script.js"></script>
 </html>
