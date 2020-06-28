@@ -28,22 +28,49 @@
 
     </div>
     <section class="container-fluid">
-        <div class="boxNumber">
+        <div>
             <p class="valueTimer">0</p>
             <form onsubmit="event.preventDefault();" id="insertTimer">
-                <input type="number" class="userTime" title="Numbers only" min="1" step="1">
-                <button class="btn btn-primary">Ativar</button>
+                <div class="form-group">
+                    <label>Insert seconds:</label>
+                    <input type="number" class="userTime" title="Numbers only" min="1" step="1">
+                </div>
+                <div class="">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label>Times:</label>
+                                <input type="number" class="form-control" title="Numbers only" value="1" min="1" step="1">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label>Exercises:</label>
+                                <input type="number" class="form-control" title="Numbers only" value="1" min="1" step="1">
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                </div>
+
+
+
+                <button class="btn btn-outline-dark"><img src="assets/img/play.png" alt="Play" title="Play"></button>
                 <div class="message-error">
                     <p>Insira um valor válido!</p>
                 </div>
             </form>
             <div class="controlTimer">
-                <div>
-                    <button class="btn btn-primary stop">Parar</button>
+                <div class="row">
+                    <div class="col-6">
+                        <button class="btn btn-outline-dark stop"><img src="assets/img/stop.png" alt="Stop" title="Stop"></button>
+                    </div>
+                    <div class="col-6">
+                        <button class="btn btn-outline-dark pause"><img src="assets/img/pause.png" alt="Pause" title="Pause"></button>
+                    </div>
                 </div>
-                <div>
-                    <button class="btn btn-primary pause">Pausar</button>
-                </div>
+
             </div>
         </div>
     </section>

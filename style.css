@@ -15,25 +15,31 @@ header {
     padding: 10px 0;
 }
 
+form {
+    padding-top: 10px;
+}
+
+label {
+    font-size: 14px;
+    font-weight: bold;
+}
+
 input {
-    float: left;
     font-size: 232px;
     background-color: transparent;
+    border-top: 1px solid #000;
     border-bottom: 1px solid #000;
-    outline: none;
     width: 100%;
     text-align: center;
 }
 
 input:hover {
+    border-top: 1px solid #999;
     border-bottom: 1px solid #999;
 }
 input:active {
     border-bottom: 1px solid #333;
-}
-
-h1 {
-    margin-left: 20px;
+    border-top: 1px solid #333;
 }
 
 section {
@@ -41,7 +47,7 @@ section {
     float: left;
 }
 
-.boxNumber {
+.userTime {
     font-size: 232px;
     text-align: center;
 }
@@ -53,10 +59,16 @@ button {
     width: 100%;
 }
 
+button img {
+    width: 32px;
+}
+
 .valueTimer {
     display: none;
     margin-right: 15px;
+    font-size: 232px;
     text-align: center;
+    margin-bottom: 0;
 }
 
 .message-error {
@@ -67,18 +79,13 @@ button {
     float: left;
     width: 100%;
     font-size: 14px;
+    text-align: center;
 }
 
 .controlTimer {
     float: left;
     width: 100%;
     display: none;
-}
-
-.controlTimer div {
-    width: 33%;
-    padding: 10px;
-    float: left;
 }
 
 .barTimer {
@@ -96,6 +103,7 @@ button {
 
 .message-error p {
     color: #FFF;
+    margin: 0;
 }
 
 .blink {
