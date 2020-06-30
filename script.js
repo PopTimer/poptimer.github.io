@@ -1,12 +1,21 @@
 var  JS = {};
 JS.timer = {
     number: document.querySelector('.userTime').value,
+    initial_number: document.querySelector('.userTime').value,
     interval: "",
     flg_pause: false,
     bar_parts: 0,
+    times: 0,
+    exercises: document.querySelector('.userTime').value,
 
     count: function() {
-        const validForm = this.valid();
+        let validForm;
+        console.log(JS.timer.times);
+        if(JS.timer.times != 1) {
+            validForm = true;
+        } else {
+            validForm = this.valid();
+        }
         if(validForm) {
             document.querySelector('#insertTimer').style.display = "none";
             document.querySelector('.message-error').style.display = "none";
@@ -15,6 +24,7 @@ JS.timer = {
             document.querySelector('.valueTimer').innerHTML = document.querySelector('.userTime').value;
             JS.timer.configBar(document.querySelector('.userTime').value);
             this.number = document.querySelector('.userTime').value;
+
             this.interval = setInterval(function() { 
                 if(!JS.timer.flg_pause) { 
                     JS.timer.substrate() 
@@ -32,7 +42,15 @@ JS.timer = {
             document.querySelector('.barTimer div').style.width = (parseFloat(document.querySelector('.barTimer div').style.width) + JS.timer.bar_parts) + "%";
             /*document.querySelector('.barTimer span').innerHTML = (parseFloat(document.querySelector('.barTimer div').style.width) + JS.timer.bar_parts) + "%"*/
         } else {
-            this.stopTimer();
+            if(JS.timer.times <= 0) {
+                this.stopTimer();
+            } else {
+                JS.timer.times = JS.timer.times - 1;
+                console.log(JS.timer.times, this.initial_number);
+                JS.timer.number = this.initial_number;
+                this.count();
+            }
+
         }
     },
     configBar: function(number) {
