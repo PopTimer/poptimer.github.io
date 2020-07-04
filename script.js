@@ -12,7 +12,6 @@ JS.timer = {
 
     count: function() {
         let validForm;
-        console.log(JS.timer.times);
         if(JS.timer.times != 1) {
             validForm = true;
         } else {
@@ -22,16 +21,16 @@ JS.timer = {
             document.querySelector('#insertTimer').style.display = "none";
             document.querySelector('.message-error').style.display = "none";
             document.querySelector('.controlTimer').style.display = "block";
-            document.querySelector('.valueTimer').style.display = "block";
+            document.querySelector('.counterBg').style.display = "block";
             document.querySelector('.valueTimer').innerHTML = document.querySelector('.userTime').value;
+            document.querySelector('.counterBg').classList.add('red');
             JS.timer.initial_number = document.querySelector('.userTime').value;
             JS.timer.qtd_times = Number(document.querySelector('.times').value);
             JS.timer.configBar(document.querySelector('.userTime').value);
             this.number = document.querySelector('.userTime').value;
             JS.timer.interval = setInterval(function() { 
                 if(!JS.timer.flg_pause) { 
-                    JS.timer.substrate() 
-                   
+                    JS.timer.substrate(); 
                 } }, 1000);
         } else {
             document.querySelector('.message-error').style.display = "block";
@@ -76,17 +75,16 @@ JS.timer = {
     },
     stopTimer: function() {
         document.querySelector('#insertTimer').style.display = "block";
-        document.querySelector('.valueTimer').style.display = "none";
+        document.querySelector('.counterBg').style.display = "none";
         document.querySelector('.controlTimer').style.display = "none";
         document.querySelector('.userTime').value = 0;
         JS.timer.flg_pause = false;
         clearInterval(JS.timer.interval);
-        console.log(JS.timer.count_times);
         JS.timer.count_times = JS.timer.count_times + 1;
         document.querySelector('.userTime').value = JS.timer.initial_number;
-        console.log(JS.timer.count_times, JS.timer.count_times < JS.timer.qtd_times, JS.timer.qtd_times);
         if(JS.timer.count_times == JS.timer.qtd_times) {
             JS.timer.count_times = 0;
+            document.querySelector('.counterBg').classList.remove('red');
         } else {
             JS.timer.count();
         }

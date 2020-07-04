@@ -26,25 +26,23 @@ label {
 
 input {
     font-size: 232px;
-    background-color: transparent;
-    border-top: 1px solid #000;
-    border-bottom: 1px solid #000;
     width: 100%;
     text-align: center;
+    border-radius: 45px;
 }
 
-input:hover {
-    border-top: 1px solid #999;
-    border-bottom: 1px solid #999;
-}
-input:active {
-    border-bottom: 1px solid #333;
-    border-top: 1px solid #333;
-}
 
 section {
     background: #CCC;
     float: left;
+}
+
+.red {
+    background: #f99898;
+}
+
+.gray {
+    background-color: #a9a9a9;
 }
 
 .userTime {
@@ -63,8 +61,18 @@ button img {
     width: 32px;
 }
 
-.valueTimer {
+.counterBg {
     display: none;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 45px;
+}
+
+.form-control {
+    border-radius: 45px;
+}
+
+.valueTimer {
     margin-right: 15px;
     font-size: 232px;
     text-align: center;

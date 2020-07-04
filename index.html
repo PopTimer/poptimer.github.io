@@ -13,7 +13,7 @@
             <h1>PopTimer</h1>
         </header>
     <div class="container-fluid">  
-        <div class="row">
+        <div class="row gray">
             <div class="col-12">
                 <div class="barTimer">
                     <div></div>
@@ -29,11 +29,13 @@
     </div>
     <section class="container-fluid">
         <div>
-            <p class="valueTimer">0</p>
+            <div class="counterBg">
+                <p class="valueTimer">0</p>
+            </div>
             <form onsubmit="event.preventDefault();" id="insertTimer">
                 <div class="form-group">
                     <label>Insert seconds:</label>
-                    <input type="number" class="userTime" title="Numbers only" min="1" step="1" required>
+                    <input type="number" class="form-control userTime" title="Numbers only" min="1" step="1" required>
                 </div>
                 <div class="">
                     <div class="row">
