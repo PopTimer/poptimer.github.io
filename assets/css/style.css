@@ -29,6 +29,7 @@ input {
     width: 100%;
     text-align: center;
     border-radius: 45px;
+    
 }
 
 
@@ -60,6 +61,7 @@ button {
 button img {
     width: 32px;
 }
+
 
 .counterBg {
     display: none;

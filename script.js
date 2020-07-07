@@ -6,9 +6,10 @@ JS.timer = {
     flg_pause: false,
     bar_parts: 0,
     times: 0,
-    exercises: document.querySelector('.exercises').value,
+    qtd_exercises: 0,
+    count_exercises: 0,
     qtd_times: 0,
-    count_times: 0,
+    count_times: 1,
 
     count: function() {
         let validForm;
@@ -23,9 +24,11 @@ JS.timer = {
             document.querySelector('.controlTimer').style.display = "block";
             document.querySelector('.counterBg').style.display = "block";
             document.querySelector('.valueTimer').innerHTML = document.querySelector('.userTime').value;
+            document.querySelector('.valueTimes').innerHTML = JS.timer.count_times;
             document.querySelector('.counterBg').classList.add('red');
             JS.timer.initial_number = document.querySelector('.userTime').value;
             JS.timer.qtd_times = Number(document.querySelector('.times').value);
+            JS.timer.qtd_exercises = Number(document.querySelector('.exercises').value);
             JS.timer.configBar(document.querySelector('.userTime').value);
             this.number = document.querySelector('.userTime').value;
             JS.timer.interval = setInterval(function() { 
@@ -82,14 +85,14 @@ JS.timer = {
         clearInterval(JS.timer.interval);
         JS.timer.count_times = JS.timer.count_times + 1;
         document.querySelector('.userTime').value = JS.timer.initial_number;
-        if(JS.timer.count_times == JS.timer.qtd_times) {
+        if(JS.timer.count_times > JS.timer.qtd_times) {
             JS.timer.count_times = 0;
+            JS.timer.count_exercises = JS.timer.count_exercises + 1;
             document.querySelector('.counterBg').classList.remove('red');
         } else {
             JS.timer.count();
         }
-
-
+        
     }
 }
 
