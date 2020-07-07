@@ -70,6 +70,19 @@ button img {
     border-radius: 45px;
 }
 
+.counterInfo {
+    display: none;
+}
+
+.box {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 45px;
+    font-size: 100px;
+    background: #FFF;
+    text-align: center;
+}
+
 .form-control {
     border-radius: 45px;
 }

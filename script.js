@@ -7,7 +7,7 @@ JS.timer = {
     bar_parts: 0,
     times: 0,
     qtd_exercises: 0,
-    count_exercises: 0,
+    count_exercises: 1,
     qtd_times: 0,
     count_times: 1,
 
@@ -23,8 +23,10 @@ JS.timer = {
             document.querySelector('.message-error').style.display = "none";
             document.querySelector('.controlTimer').style.display = "block";
             document.querySelector('.counterBg').style.display = "block";
+            document.querySelector('.counterInfo').style.display = "flex";
             document.querySelector('.valueTimer').innerHTML = document.querySelector('.userTime').value;
             document.querySelector('.valueTimes').innerHTML = JS.timer.count_times;
+            document.querySelector('.valueExercises').innerHTML = JS.timer.count_exercises;
             document.querySelector('.counterBg').classList.add('red');
             JS.timer.initial_number = document.querySelector('.userTime').value;
             JS.timer.qtd_times = Number(document.querySelector('.times').value);
@@ -51,7 +53,6 @@ JS.timer = {
                 this.stopTimer();
             } else {
                 JS.timer.times = JS.timer.times - 1;
-                console.log(JS.timer.times, this.initial_number);
                 JS.timer.number = this.initial_number;
                 this.count();
             }
@@ -79,17 +80,23 @@ JS.timer = {
     stopTimer: function() {
         document.querySelector('#insertTimer').style.display = "block";
         document.querySelector('.counterBg').style.display = "none";
+        document.querySelector('.counterInfo').style.display = "none";
         document.querySelector('.controlTimer').style.display = "none";
         document.querySelector('.userTime').value = 0;
         JS.timer.flg_pause = false;
         clearInterval(JS.timer.interval);
-        JS.timer.count_times = JS.timer.count_times + 1;
         document.querySelector('.userTime').value = JS.timer.initial_number;
-        if(JS.timer.count_times > JS.timer.qtd_times) {
-            JS.timer.count_times = 0;
-            JS.timer.count_exercises = JS.timer.count_exercises + 1;
-            document.querySelector('.counterBg').classList.remove('red');
+        if(JS.timer.count_times == JS.timer.qtd_times) {
+            JS.timer.count_times = 1;
+            if(JS.timer.count_exercises >= JS.timer.qtd_exercises) {
+                JS.timer.count_exercises = 1;
+                document.querySelector('.counterBg').classList.remove('red');
+            } else {
+                JS.timer.count_exercises = JS.timer.count_exercises + 1;
+                JS.timer.count();
+            }
         } else {
+            JS.timer.count_times = JS.timer.count_times + 1;
             JS.timer.count();
         }
         
