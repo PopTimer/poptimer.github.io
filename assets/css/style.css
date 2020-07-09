@@ -83,6 +83,10 @@ button img {
     text-align: center;
 }
 
+.box h2 {
+    font-size: 16px;
+}
+
 .form-control {
     border-radius: 45px;
 }

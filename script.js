@@ -8,8 +8,10 @@ JS.timer = {
     times: 0,
     qtd_exercises: 0,
     count_exercises: 1,
+    initial_exercises: document.querySelector('.exercises').value,
     qtd_times: 0,
     count_times: 1,
+    initial_times: document.querySelector('.times').value,
 
     count: function() {
         let validForm;
@@ -47,7 +49,6 @@ JS.timer = {
             document.querySelector('.userTime').value = this.number;
             document.querySelector('.valueTimer').innerHTML = this.number;
             document.querySelector('.barTimer div').style.width = (parseFloat(document.querySelector('.barTimer div').style.width) + JS.timer.bar_parts) + "%";
-            /*document.querySelector('.barTimer span').innerHTML = (parseFloat(document.querySelector('.barTimer div').style.width) + JS.timer.bar_parts) + "%"*/
         } else {
             if(JS.timer.times <= 0) {
                 this.stopTimer();
