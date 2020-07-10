@@ -12,7 +12,10 @@ JS.timer = {
     qtd_times: 0,
     count_times: 1,
     initial_times: document.querySelector('.times').value,
+    
+    configLayout: function() {
 
+    },
     count: function() {
         let validForm;
         if(JS.timer.times != 1) {
