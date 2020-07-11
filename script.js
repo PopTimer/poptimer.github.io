@@ -86,7 +86,7 @@ JS.timer = {
             JS.timer.flg_pause = false;
         }
     },
-    stopTimer: function() {
+    initialLayout: function() {
         document.querySelector('#insertTimer').style.display = "block";
         document.querySelector('.counterBg').style.display = "none";
         document.querySelector('.counterInfo').style.display = "none";
@@ -95,23 +95,31 @@ JS.timer = {
         JS.timer.flg_pause = false;
         clearInterval(JS.timer.interval);
         document.querySelector('.userTime').value = JS.timer.initial_number;
+    },
+    stopTimer: function() {
+        this.initialLayout();
         if(JS.timer.count_times == JS.timer.qtd_times) {
             JS.timer.count_times = 1;
             if(JS.timer.count_exercises >= JS.timer.qtd_exercises) {
                 JS.timer.count_exercises = 1;
                 document.querySelector('.counterBg').classList.remove('red');
             } else {
-                JS.timer.count_exercises = JS.timer.count_exercises + 1;
-                JS.timer.count();
+                this.count_exercises = this.count_exercises + 1;
+                this.count();
             }
         } else {
-            JS.timer.count_times = JS.timer.count_times + 1;
-            JS.timer.count();
+            this.count_times = this.count_times + 1;
+            this.count();
         }
-        
+    },
+    cancelTimer: function() {
+        this.initialLayout();
+        this.count_exercises = 1;
+        this.count_times = 1;
+        document.querySelector('.counterBg').classList.remove('red');
     }
 }
 
 document.querySelector('#insertTimer button').addEventListener("click", function() {JS.timer.count()}, false);
 document.querySelector('.pause').addEventListener("click", function() {JS.timer.pauseTimer()}, false);
-document.querySelector('.stop').addEventListener("click", function() {JS.timer.stopTimer()}, false);
+document.querySelector('.stop').addEventListener("click", function() {JS.timer.cancelTimer()}, false);
