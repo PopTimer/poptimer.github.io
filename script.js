@@ -8,13 +8,15 @@ JS.timer = {
     times: 0,
     qtd_exercises: 0,
     count_exercises: 1,
-    initial_exercises: document.querySelector('.exercises').value,
+    initial_exercises: 1,
     qtd_times: 0,
     count_times: 1,
-    initial_times: document.querySelector('.times').value,
-    
-    configLayout: function() {
-
+    initial_times: 1,
+    formatTimes: function() {
+        return  JS.timer.count_times.toString() + "/" + JS.timer.initial_times.toString();
+    },
+    formatExercises: function() {
+        return  JS.timer.count_exercises.toString() + "/" + JS.timer.initial_exercises.toString();
     },
     count: function() {
         let validForm;
@@ -24,16 +26,19 @@ JS.timer = {
             validForm = this.valid();
         }
         if(validForm) {
+            JS.timer.initial_number = document.querySelector('.userTime').value;
+            JS.timer.initial_exercises = document.querySelector('.exercises').value;
+            JS.timer.initial_times = document.querySelector('.times').value;
+
             document.querySelector('#insertTimer').style.display = "none";
             document.querySelector('.message-error').style.display = "none";
             document.querySelector('.controlTimer').style.display = "block";
             document.querySelector('.counterBg').style.display = "block";
             document.querySelector('.counterInfo').style.display = "flex";
             document.querySelector('.valueTimer').innerHTML = document.querySelector('.userTime').value;
-            document.querySelector('.valueTimes').innerHTML = JS.timer.count_times;
-            document.querySelector('.valueExercises').innerHTML = JS.timer.count_exercises;
+            document.querySelector('.valueTimes').innerHTML = this.formatTimes();
+            document.querySelector('.valueExercises').innerHTML = this.formatExercises();
             document.querySelector('.counterBg').classList.add('red');
-            JS.timer.initial_number = document.querySelector('.userTime').value;
             JS.timer.qtd_times = Number(document.querySelector('.times').value);
             JS.timer.qtd_exercises = Number(document.querySelector('.exercises').value);
             JS.timer.configBar(document.querySelector('.userTime').value);
