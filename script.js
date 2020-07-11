@@ -18,6 +18,15 @@ JS.timer = {
     formatExercises: function() {
         return  JS.timer.count_exercises.toString() + "/" + JS.timer.initial_exercises.toString();
     },
+    formatSeconds: function(seconds) {
+        if (seconds >= 3600) { 
+            return new Date(seconds * 1000).toISOString().substr(11, 8);
+        } else if (seconds >= 60) {
+            return new Date(seconds * 1000).toISOString().substr(14, 5);
+        } else {
+            return seconds;
+        }
+    },  
     count: function() {
         let validForm;
         if(JS.timer.times != 1) {
@@ -35,7 +44,7 @@ JS.timer = {
             document.querySelector('.controlTimer').style.display = "block";
             document.querySelector('.counterBg').style.display = "block";
             document.querySelector('.counterInfo').style.display = "flex";
-            document.querySelector('.valueTimer').innerHTML = document.querySelector('.userTime').value;
+            document.querySelector('.valueTimer').innerHTML = this.formatSeconds(document.querySelector('.userTime').value);
             document.querySelector('.valueTimes').innerHTML = this.formatTimes();
             document.querySelector('.valueExercises').innerHTML = this.formatExercises();
             document.querySelector('.counterBg').classList.add('red');
@@ -55,7 +64,7 @@ JS.timer = {
         if (this.number > 0) {
             this.number = this.number - 1;
             document.querySelector('.userTime').value = this.number;
-            document.querySelector('.valueTimer').innerHTML = this.number;
+            document.querySelector('.valueTimer').innerHTML = this.formatSeconds(this.number);
             document.querySelector('.barTimer div').style.width = (parseFloat(document.querySelector('.barTimer div').style.width) + JS.timer.bar_parts) + "%";
         } else {
             if(JS.timer.times <= 0) {
