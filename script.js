@@ -13,7 +13,7 @@ JS.timer = {
     count_times: 1,
     initial_times: 1,
     rest_time: 10,
-    counter: false,
+    counter: true,
 
     formatTimes: function() {
         return  JS.timer.count_times.toString() + "/" + JS.timer.initial_times.toString();
@@ -48,7 +48,6 @@ JS.timer = {
         this.number = document.querySelector('.userTime').value;
     },
     rest: function() {
-        console.log("a");
         this.initialLayoutCounter();
         JS.timer.counter = false;
         document.querySelector('.counterBg').classList.add('yellow');
@@ -58,7 +57,6 @@ JS.timer = {
             } }, 1000);
         clearInterval(JS.timer.interval);
 
-        this.count();
     },
     count: function() {
         let validForm;
@@ -69,8 +67,6 @@ JS.timer = {
         }
         if(validForm) {
             this.initialLayoutCounter();
-            document.querySelector('.counterBg').classList.add('red');
-            JS.timer.counter = true;
             JS.timer.interval = setInterval(function() { 
                 if(!JS.timer.flg_pause) { 
                     JS.timer.substrate(); 
@@ -88,7 +84,7 @@ JS.timer = {
         } else {
             if(JS.timer.times <= 0) {
                 var audio = new Audio('boxingBell.mp3');
-                //audio.play();
+                audio.play();
                 this.stopTimer();
             } else {
                 JS.timer.times = JS.timer.times - 1;
@@ -97,7 +93,6 @@ JS.timer = {
             }
 
         }
-        console.log('b');
     },
     configBar: function(number) {
         JS.timer.bar_parts = 100/number;
@@ -136,17 +131,20 @@ JS.timer = {
                 document.querySelector('.counterBg').classList.remove('red');
             } else {
                 this.count_exercises = this.count_exercises + 1;
-                this.rest();
                 this.count();
-                
             }
         } else {
             if(JS.timer.counter == true) {
+                JS.timer.counter = false;
+                document.querySelector('.counterBg').classList.remove('red');
+                document.querySelector('.counterBg').classList.add('yellow');
+            } else {
+                JS.timer.counter = true;
                 this.count_times = this.count_times + 1;
+                document.querySelector('.counterBg').classList.remove('yellow');
+                document.querySelector('.counterBg').classList.add('red');
             }
-            this.rest();
-
-
+            this.count();
         }
     },
     cancelTimer: function() {
