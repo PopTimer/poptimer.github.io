@@ -12,6 +12,9 @@ JS.timer = {
     qtd_times: 0,
     count_times: 1,
     initial_times: 1,
+    rest_time: 10,
+    counter: false,
+
     formatTimes: function() {
         return  JS.timer.count_times.toString() + "/" + JS.timer.initial_times.toString();
     },
@@ -26,7 +29,37 @@ JS.timer = {
         } else {
             return seconds;
         }
-    },  
+    },
+    initialLayoutCounter: function() {
+        JS.timer.initial_number = document.querySelector('.userTime').value;
+        JS.timer.initial_exercises = document.querySelector('.exercises').value;
+        JS.timer.initial_times = document.querySelector('.times').value;
+        document.querySelector('#insertTimer').style.display = "none";
+        document.querySelector('.message-error').style.display = "none";
+        document.querySelector('.controlTimer').style.display = "block";
+        document.querySelector('.counterBg').style.display = "block";
+        document.querySelector('.counterInfo').style.display = "flex";
+        document.querySelector('.valueTimer').innerHTML = this.formatSeconds(document.querySelector('.userTime').value);
+        document.querySelector('.valueTimes').innerHTML = this.formatTimes();
+        document.querySelector('.valueExercises').innerHTML = this.formatExercises();
+        JS.timer.qtd_times = Number(document.querySelector('.times').value);
+        JS.timer.qtd_exercises = Number(document.querySelector('.exercises').value);
+        JS.timer.configBar(document.querySelector('.userTime').value);
+        this.number = document.querySelector('.userTime').value;
+    },
+    rest: function() {
+        console.log("a");
+        this.initialLayoutCounter();
+        JS.timer.counter = false;
+        document.querySelector('.counterBg').classList.add('yellow');
+        JS.timer.interval = setInterval(function() { 
+            if(!JS.timer.flg_pause) { 
+                JS.timer.substrate(); 
+            } }, 1000);
+        clearInterval(JS.timer.interval);
+
+        this.count();
+    },
     count: function() {
         let validForm;
         if(JS.timer.times != 1) {
@@ -35,23 +68,9 @@ JS.timer = {
             validForm = this.valid();
         }
         if(validForm) {
-            JS.timer.initial_number = document.querySelector('.userTime').value;
-            JS.timer.initial_exercises = document.querySelector('.exercises').value;
-            JS.timer.initial_times = document.querySelector('.times').value;
-
-            document.querySelector('#insertTimer').style.display = "none";
-            document.querySelector('.message-error').style.display = "none";
-            document.querySelector('.controlTimer').style.display = "block";
-            document.querySelector('.counterBg').style.display = "block";
-            document.querySelector('.counterInfo').style.display = "flex";
-            document.querySelector('.valueTimer').innerHTML = this.formatSeconds(document.querySelector('.userTime').value);
-            document.querySelector('.valueTimes').innerHTML = this.formatTimes();
-            document.querySelector('.valueExercises').innerHTML = this.formatExercises();
+            this.initialLayoutCounter();
             document.querySelector('.counterBg').classList.add('red');
-            JS.timer.qtd_times = Number(document.querySelector('.times').value);
-            JS.timer.qtd_exercises = Number(document.querySelector('.exercises').value);
-            JS.timer.configBar(document.querySelector('.userTime').value);
-            this.number = document.querySelector('.userTime').value;
+            JS.timer.counter = true;
             JS.timer.interval = setInterval(function() { 
                 if(!JS.timer.flg_pause) { 
                     JS.timer.substrate(); 
@@ -69,7 +88,7 @@ JS.timer = {
         } else {
             if(JS.timer.times <= 0) {
                 var audio = new Audio('boxingBell.mp3');
-                audio.play();
+                //audio.play();
                 this.stopTimer();
             } else {
                 JS.timer.times = JS.timer.times - 1;
@@ -78,6 +97,7 @@ JS.timer = {
             }
 
         }
+        console.log('b');
     },
     configBar: function(number) {
         JS.timer.bar_parts = 100/number;
@@ -116,11 +136,17 @@ JS.timer = {
                 document.querySelector('.counterBg').classList.remove('red');
             } else {
                 this.count_exercises = this.count_exercises + 1;
+                this.rest();
                 this.count();
+                
             }
         } else {
-            this.count_times = this.count_times + 1;
-            this.count();
+            if(JS.timer.counter == true) {
+                this.count_times = this.count_times + 1;
+            }
+            this.rest();
+
+
         }
     },
     cancelTimer: function() {
