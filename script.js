@@ -68,6 +68,8 @@ JS.timer = {
             document.querySelector('.barTimer div').style.width = (parseFloat(document.querySelector('.barTimer div').style.width) + JS.timer.bar_parts) + "%";
         } else {
             if(JS.timer.times <= 0) {
+                var audio = new Audio('boxingBell.mp3');
+                audio.play();
                 this.stopTimer();
             } else {
                 JS.timer.times = JS.timer.times - 1;

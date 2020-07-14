@@ -142,3 +142,35 @@ button img {
       background: #FFF;
     }
   }
+
+
+  @media (max-width: 500px) {
+    .userTime {
+        font-size: 60px;
+    } 
+
+    .valueTimer {
+        font-size: 60px;
+        margin: 0;
+    }
+
+    .valueTimes, .valueExercises {
+        font-size: 25px;
+    }
+}
+
+@media (min-width: 501px) and (max-width: 992px) {
+    .userTime {
+        font-size: 105px;
+    } 
+
+    .valueTimer {
+        font-size: 105px;
+        margin: 0;
+    }
+
+    .valueTimes, .valueExercises {
+        font-size: 80px;
+    }
+
+}

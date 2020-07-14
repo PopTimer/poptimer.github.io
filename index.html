@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Poptimer is a seconds counter!">
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <title>PopTimer</title>
@@ -50,7 +51,7 @@
             <form onsubmit="event.preventDefault();" id="insertTimer">
                 <div class="form-group">
                     <label>Insert seconds:</label>
-                    <input type="number" class="form-control userTime" title="Numbers only" min="1" step="1" required>
+                    <input type="number" class="form-control userTime" title="Numbers only" min="1" max="86399" step="1" required>
                 </div>
                 <div class="">
                     <div class="row">
