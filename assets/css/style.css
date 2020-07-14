@@ -42,6 +42,10 @@ section {
     background: #f99898;
 }
 
+.yellow {
+    background : yellow;
+}
+
 .gray {
     background-color: #a9a9a9;
 }
