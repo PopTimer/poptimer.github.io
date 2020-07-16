@@ -14,7 +14,12 @@ JS.timer = {
     initial_times: 1,
     rest_time: 10,
     counter: true,
-
+    init: function() {
+        document.querySelector('.counterBg').classList.remove('yellow');
+        document.querySelector('.counterBg').classList.add('red');
+        JS.timer.counter = true;
+        this.count();
+    },
     formatTimes: function() {
         return  JS.timer.count_times.toString() + "/" + JS.timer.initial_times.toString();
     },
@@ -56,7 +61,6 @@ JS.timer = {
                 JS.timer.substrate(); 
             } }, 1000);
         clearInterval(JS.timer.interval);
-
     },
     count: function() {
         let validForm;
@@ -78,13 +82,19 @@ JS.timer = {
     substrate: function() {
         if (this.number > 0) {
             this.number = this.number - 1;
+            if (JS.timer.counter == false && this.number <= 3) {
+                var audio = new Audio('beginCount.wav');
+                audio.play();
+            }
             document.querySelector('.userTime').value = this.number;
             document.querySelector('.valueTimer').innerHTML = this.formatSeconds(this.number);
             document.querySelector('.barTimer div').style.width = (parseFloat(document.querySelector('.barTimer div').style.width) + JS.timer.bar_parts) + "%";
         } else {
             if(JS.timer.times <= 0) {
-                var audio = new Audio('boxingBell.mp3');
-                audio.play();
+                if(JS.timer.counter == true) {
+                    var audio = new Audio('boxingBell.mp3');
+                    audio.play();
+                }
                 this.stopTimer();
             } else {
                 JS.timer.times = JS.timer.times - 1;
@@ -155,6 +165,6 @@ JS.timer = {
     }
 }
 
-document.querySelector('#insertTimer button').addEventListener("click", function() {JS.timer.count()}, false);
+document.querySelector('#insertTimer button').addEventListener("click", function() {JS.timer.init()}, false);
 document.querySelector('.pause').addEventListener("click", function() {JS.timer.pauseTimer()}, false);
 document.querySelector('.stop').addEventListener("click", function() {JS.timer.cancelTimer()}, false);
