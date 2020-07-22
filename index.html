@@ -45,23 +45,23 @@
                     </div>
                 </div>
             </div>
-            <form onsubmit="event.preventDefault();" id="insertTimer">
+            <form onsubmit="event.preventDefault();" id="insertTimer" novalidate>
                 <div class="form-group">
                     <label>Insert seconds:</label>
-                    <input type="number" class="form-control userTime" title="Numbers only" min="1" max="86399" step="1" required>
+                    <input type="number" class="form-control userTime" title="Numbers only" min="1" max="86399" step="1">
                 </div>
                 <div class="">
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
                                 <label>Times:</label>
-                                <input type="number" class="form-control times" title="Numbers only" value="1" min="1" step="1" required>
+                                <input type="number" class="form-control times" title="Numbers only" value="1" min="1" step="1" >
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
                                 <label>Exercises:</label>
-                                <input type="number" class="form-control exercises" title="Numbers only" value="1" min="1" step="1" required>
+                                <input type="number" class="form-control exercises" title="Numbers only" value="1" min="1" step="1">
                             </div>
                         </div>
                     </div>
@@ -73,7 +73,7 @@
 
                 <button class="btn btn-outline-dark"><img src="assets/img/play.png" alt="Play" title="Play"></button>
                 <div class="message-error">
-                    <p>Insira um valor válido!</p>
+                    <p>Insira um valor entre 1 a 86399!</p>
                 </div>
             </form>
             <div class="controlTimer">

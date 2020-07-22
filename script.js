@@ -64,11 +64,7 @@ JS.timer = {
     },
     count: function() {
         let validForm;
-        if(JS.timer.times != 1) {
-            validForm = true;
-        } else {
-            validForm = this.valid();
-        }
+        validForm = this.valid();
         if(validForm) {
             this.initialLayoutCounter();
             JS.timer.interval = setInterval(function() { 
@@ -111,9 +107,12 @@ JS.timer = {
     valid: function() {
         if(document.querySelector('.userTime').value == 0) {
             return false;
-        } else {
-            return true;
+        } 
+        
+        if(document.querySelector('.userTime').value >= 86400) {
+            return false;
         }
+        return true;
     },
     pauseTimer: function() {
         if(!JS.timer.flg_pause) {
