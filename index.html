@@ -46,9 +46,19 @@
                 </div>
             </div>
             <form onsubmit="event.preventDefault();" id="insertTimer" novalidate>
-                <div class="form-group">
-                    <label>Insert seconds:</label>
-                    <input type="number" class="form-control userTime" title="Numbers only" min="1" max="86399" step="1">
+                <div class="row">
+                    <div class=" col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label>Insert rest seconds:</label>
+                            <input type="number" class="form-control restTime" title="Numbers only" min="1" max="86399" step="1">
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label>Insert exercise seconds:</label>
+                            <input type="number" class="form-control userTime" title="Numbers only" min="1" max="86399" step="1">
+                        </div>
+                    </div>
                 </div>
                 <div class="">
                     <div class="row">
@@ -64,13 +74,8 @@
                                 <input type="number" class="form-control exercises" title="Numbers only" value="1" min="1" step="1">
                             </div>
                         </div>
-                    </div>
-
-                    
+                    </div>                   
                 </div>
-
-
-
                 <button class="btn btn-outline-dark"><img src="assets/img/play.png" alt="Play" title="Play"></button>
                 <div class="message-error">
                     <p>Insira um valor entre 1 a 86399!</p>
@@ -85,7 +90,6 @@
                         <button class="btn btn-outline-dark pause"><img src="assets/img/pause.png" alt="Pause" title="Pause"></button>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
