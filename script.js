@@ -12,7 +12,7 @@ JS.timer = {
     qtd_times: 0,
     count_times: 1,
     initial_times: 1,
-    rest_time: 10,
+    rest_time: document.querySelector('.restTime').value,
     counter: true,
     init: function() {
         document.querySelector('.counterBg').classList.remove('yellow');
@@ -44,17 +44,25 @@ JS.timer = {
         document.querySelector('.controlTimer').style.display = "block";
         document.querySelector('.counterBg').style.display = "block";
         document.querySelector('.counterInfo').style.display = "flex";
-        document.querySelector('.valueTimer').innerHTML = this.formatSeconds(document.querySelector('.userTime').value);
+        //document.querySelector('.valueTimer').innerHTML = this.formatSeconds(document.querySelector('.userTime').value);
         document.querySelector('.valueTimes').innerHTML = this.formatTimes();
         document.querySelector('.valueExercises').innerHTML = this.formatExercises();
         JS.timer.qtd_times = Number(document.querySelector('.times').value);
         JS.timer.qtd_exercises = Number(document.querySelector('.exercises').value);
         JS.timer.configBar(document.querySelector('.userTime').value);
-        this.number = document.querySelector('.userTime').value;
+        if(!JS.timer.counter) {
+            this.number = document.querySelector('.restTime').value;
+            document.querySelector('.valueTimer').innerHTML = this.formatSeconds(document.querySelector('.restTime').value);
+        } else {
+            this.number = document.querySelector('.userTime').value;
+            document.querySelector('.valueTimer').innerHTML = this.formatSeconds(document.querySelector('.userTime').value);
+        }
+
     },
     rest: function() {
         this.initialLayoutCounter();
         JS.timer.counter = false;
+        JS.timer.number = JS.timer.rest_time;
         document.querySelector('.counterBg').classList.add('yellow');
         JS.timer.interval = setInterval(function() { 
             if(!JS.timer.flg_pause) { 
@@ -147,6 +155,7 @@ JS.timer = {
                 JS.timer.counter = false;
                 document.querySelector('.counterBg').classList.remove('red');
                 document.querySelector('.counterBg').classList.add('yellow');
+                JS.timer.number = JS.timer.rest_time;
             } else {
                 JS.timer.counter = true;
                 this.count_times = this.count_times + 1;
