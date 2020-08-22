@@ -49,7 +49,6 @@ JS.timer = {
         document.querySelector('.valueExercises').innerHTML = this.formatExercises();
         JS.timer.qtd_times = Number(document.querySelector('.times').value);
         JS.timer.qtd_exercises = Number(document.querySelector('.exercises').value);
-        JS.timer.configBar(document.querySelector('.userTime').value);
         if(!JS.timer.counter) {
             this.number = document.querySelector('.restTime').value;
             document.querySelector('.valueTimer').innerHTML = this.formatSeconds(document.querySelector('.restTime').value);
@@ -57,7 +56,7 @@ JS.timer = {
             this.number = document.querySelector('.userTime').value;
             document.querySelector('.valueTimer').innerHTML = this.formatSeconds(document.querySelector('.userTime').value);
         }
-
+        JS.timer.configBar(this.number);
     },
     rest: function() {
         this.initialLayoutCounter();
@@ -143,20 +142,38 @@ JS.timer = {
         this.initialLayout();
         if(JS.timer.count_times == JS.timer.qtd_times) {
             JS.timer.count_times = 1;
+
             if(JS.timer.count_exercises >= JS.timer.qtd_exercises) {
                 JS.timer.count_exercises = 1;
                 document.querySelector('.counterBg').classList.remove('red');
             } else {
                 this.count_exercises = this.count_exercises + 1;
+                if(JS.timer.counter == true) {
+                    console.log("a")
+                    JS.timer.counter = false;
+                    document.querySelector('.counterBg').classList.remove('red');
+                    document.querySelector('.counterBg').classList.add('yellow');
+                    JS.timer.number = JS.timer.rest_time;
+                    
+                } else {
+                    console.log("b")
+                    JS.timer.counter = true;
+                    document.querySelector('.counterBg').classList.remove('yellow');
+                    document.querySelector('.counterBg').classList.add('red');
+
+                }
+
                 this.count();
             }
         } else {
             if(JS.timer.counter == true) {
+                console.log("c")
                 JS.timer.counter = false;
                 document.querySelector('.counterBg').classList.remove('red');
                 document.querySelector('.counterBg').classList.add('yellow');
                 JS.timer.number = JS.timer.rest_time;
             } else {
+                console.log("d")
                 JS.timer.counter = true;
                 this.count_times = this.count_times + 1;
                 document.querySelector('.counterBg').classList.remove('yellow');
