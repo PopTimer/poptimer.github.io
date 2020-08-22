@@ -140,40 +140,33 @@ JS.timer = {
     },
     stopTimer: function() {
         this.initialLayout();
-        if(JS.timer.count_times == JS.timer.qtd_times) {
+        if(JS.timer.count_times == JS.timer.qtd_times && JS.timer.counter == false) {
             JS.timer.count_times = 1;
-
             if(JS.timer.count_exercises >= JS.timer.qtd_exercises) {
                 JS.timer.count_exercises = 1;
                 document.querySelector('.counterBg').classList.remove('red');
             } else {
                 this.count_exercises = this.count_exercises + 1;
                 if(JS.timer.counter == true) {
-                    console.log("a")
                     JS.timer.counter = false;
                     document.querySelector('.counterBg').classList.remove('red');
                     document.querySelector('.counterBg').classList.add('yellow');
                     JS.timer.number = JS.timer.rest_time;
                     
                 } else {
-                    console.log("b")
                     JS.timer.counter = true;
                     document.querySelector('.counterBg').classList.remove('yellow');
                     document.querySelector('.counterBg').classList.add('red');
-
                 }
-
                 this.count();
             }
         } else {
             if(JS.timer.counter == true) {
-                console.log("c")
                 JS.timer.counter = false;
                 document.querySelector('.counterBg').classList.remove('red');
                 document.querySelector('.counterBg').classList.add('yellow');
                 JS.timer.number = JS.timer.rest_time;
             } else {
-                console.log("d")
                 JS.timer.counter = true;
                 this.count_times = this.count_times + 1;
                 document.querySelector('.counterBg').classList.remove('yellow');
