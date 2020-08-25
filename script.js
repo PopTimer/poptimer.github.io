@@ -14,6 +14,9 @@ JS.timer = {
     initial_times: 1,
     rest_time: document.querySelector('.restTime').value,
     counter: true,
+    prep: function() {
+        setTimeout(() => this.init(), 3000);
+    },
     init: function() {
         document.querySelector('.counterBg').classList.remove('yellow');
         document.querySelector('.counterBg').classList.add('red');
@@ -183,6 +186,6 @@ JS.timer = {
     }
 }
 
-document.querySelector('#insertTimer button').addEventListener("click", function() {JS.timer.init()}, false);
+document.querySelector('#insertTimer button').addEventListener("click", function() {JS.timer.prep()}, false);
 document.querySelector('.pause').addEventListener("click", function() {JS.timer.pauseTimer()}, false);
 document.querySelector('.stop').addEventListener("click", function() {JS.timer.cancelTimer()}, false);
