@@ -15,12 +15,14 @@ JS.timer = {
     rest_time: document.querySelector('.restTime').value,
     counter: true,
     prep: function() {
+        document.querySelector('.countReady').style.display = "block";
         setTimeout(() => this.init(), 3000);
     },
     init: function() {
         document.querySelector('.counterBg').classList.remove('yellow');
         document.querySelector('.counterBg').classList.add('red');
         JS.timer.counter = true;
+        document.querySelector('.countReady').style.display = "none";
         this.count();
     },
     formatTimes: function() {
